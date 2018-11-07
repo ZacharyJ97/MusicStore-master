@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MusicStore.Models;
 using MusicStore.Data_Contexts;
+using System.Net;
 
 namespace MetalMania.Controllers
 {
@@ -24,6 +25,24 @@ namespace MetalMania.Controllers
             // TO-DO: Call GetAlbums() instead of db.Albums
             ViewBag.Albums = GetAlbums().OrderBy(album => album.Title);
             return View();
+        }
+
+
+        public ActionResult Album(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Album album =db.Albums.Find(id);
+
+            if (album == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(album);
         }
 
 
