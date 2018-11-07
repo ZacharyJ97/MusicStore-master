@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Albums";
+}
+
+<h2>Albums</h2>
+
+@{
+    /* UPDATE: Use ViewBag.Albums as the collection */
+    foreach (var album in ViewBag.Albums)
+    {
+        string albumImage = album.AlbumId + ".jpg";
+
+        <div class="row searchResult">
+            <div class="col-md-2">
+                <img src="~/Images/@albumImage" />
+            </div>
+            <div class="col-md-10">
+                <h2>@album.Title</h2>
+                <p>@album.Artist  (@album.Year)</p>
+            </div>
+        </div>
+
+    }
+}
