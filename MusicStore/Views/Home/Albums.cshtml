@@ -13,7 +13,9 @@
 
         <div class="row searchResult">
             <div class="col-md-2">
-                <img src="~/Images/@albumImage" />
+                <a href="@Url.Action("Album", "Home", new { id = @album.AlbumId } )">
+                    <img src="~/Images/@albumImage" />
+                </a>
             </div>
             <div class="col-md-10">
                 <h2>@album.Title</h2>
